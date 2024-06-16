@@ -1,0 +1,32 @@
+<!-- fragment_canton.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_gray">
+
+    <!-- Título principal -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Cantones"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:padding="16dp"
+        android:gravity="center" />
+
+    <!-- RecyclerView para mostrar los cantones -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCantones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>
