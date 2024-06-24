@@ -3,8 +3,8 @@ package ec.edu.espoch.aplicativo.cantones.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ec.edu.espoch.aplicativo.R
@@ -35,12 +35,12 @@ class CantonesAdapter(private val onItemClick: (CantonesMain) -> Unit) : Recycle
 
     inner class CantonesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val photoImageView: ImageView = itemView.findViewById(R.id.imageViewCanton)
-        private val nameButton: Button = itemView.findViewById(R.id.buttonCantonName)
+        private val nameTextView: TextView = itemView.findViewById(R.id.textViewCantonName)
 
         fun bind(canton: CantonesMain) {
-            nameButton.text = canton.name
+            nameTextView.text = canton.name
             // Cargar la imagen usando Picasso u otra biblioteca de carga de imágenes
-            Picasso.get().load(canton.photoUrl).into(photoImageView)
+            Picasso.get().load(canton.photoUrl).placeholder(R.drawable.placeholder_image).into(photoImageView)
 
             itemView.setOnClickListener {
                 onItemClick(canton)

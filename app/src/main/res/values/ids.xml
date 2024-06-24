@@ -2,4 +2,5 @@
 <resources>
     <item name="nameTextView" type="id" />
     <item name="photoImageView" type="id" />
+    <item name="container" type="id" />
 </resources>

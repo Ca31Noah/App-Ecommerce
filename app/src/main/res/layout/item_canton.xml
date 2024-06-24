@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:layout_margin="8dp"
-    android:background="@drawable/background_gray">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp">
 
-    <ImageView
-        android:id="@+id/imageViewCanton"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/placeholder_image"
-        android:padding="8dp" />
-
-    <Button
-        android:id="@+id/buttonCantonName"
-        android:fontFamily="@font/montserrat_light"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/imageViewCanton"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_image" />
+
+        <TextView
+            android:id="@+id/textViewCantonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/montserrat_bold" />
+
+        <Button
+            android:id="@+id/buttonVerMas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Ver más"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -16,7 +16,7 @@ class CantonInteractor {
             CantonesMain(
                 2,
                 "Sacha",
-                "https://pbs.twimg.com/profile_images/1296620651768434690/rKx1pjIX_400x400.jpg"
+                "https://pbs.twimg.com/profile_images/1658133088872935424/F74Dk3Ng_400x400.jpg"
             ),
             CantonesMain(
                 3,

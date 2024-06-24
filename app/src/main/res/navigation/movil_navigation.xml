@@ -3,15 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movil_navigation"
-    app:startDestination="@id/inicioFragment">
-    <fragment
-        android:id="@+id/inicioFragment"
-        android:name="ec.edu.espoch.aplicativo.inicio.view.InicioFragment"
-        android:label="fragment_inicio"
-        tools:layout="@layout/fragment_inicio" />
+    app:startDestination="@id/cantonFragment">
+
     <fragment
         android:id="@+id/cantonFragment"
         android:name="ec.edu.espoch.aplicativo.cantones.view.CantonFragment"
         android:label="CantonFragment"
-        tools:layout="@layout/fragment_canton"/>
+        tools:layout="@layout/fragment_canton" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ec.edu.espoch.aplicativo.about.view.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ec.edu.espoch.aplicativo.home.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="ec.edu.espoch.aplicativo.products.view.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
 </navigation>
