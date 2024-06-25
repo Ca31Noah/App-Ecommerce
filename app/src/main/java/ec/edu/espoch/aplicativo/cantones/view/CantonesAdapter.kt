@@ -39,7 +39,6 @@ class CantonesAdapter(private val onItemClick: (CantonesMain) -> Unit) : Recycle
 
         fun bind(canton: CantonesMain) {
             nameTextView.text = canton.name
-            // Cargar la imagen usando Picasso u otra biblioteca de carga de imágenes
             Picasso.get().load(canton.photoUrl).placeholder(R.drawable.placeholder_image).into(photoImageView)
 
             itemView.setOnClickListener {

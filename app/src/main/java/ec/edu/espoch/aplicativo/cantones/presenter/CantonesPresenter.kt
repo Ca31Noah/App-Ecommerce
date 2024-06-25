@@ -1,15 +1,17 @@
 package ec.edu.espoch.aplicativo.cantones.presenter
 
-import ec.edu.espoch.aplicativo.cantones.CantonesView
+import ec.edu.espoch.aplicativo.cantones.CantonesContract
 import ec.edu.espoch.aplicativo.cantones.data.CantonInteractor
 
-class CantonesPresenter(private val view: CantonesView) {
+class CantonesPresenter(private val view: CantonesContract.View) : CantonesContract.Presenter {
 
-    private val repository = CantonInteractor()
+    private val interactor = CantonInteractor()
 
-    fun cargarCantones() {
-        repository.getCantones { cantones ->
-            view.mostrarCantones(cantones)
+    override fun loadCantones() {
+        view.showLoader()
+        interactor.getCantones { cantones ->
+            view.hideLoader()
+            view.showCantones(cantones)
         }
     }
 }

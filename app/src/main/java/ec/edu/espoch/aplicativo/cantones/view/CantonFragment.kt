@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ec.edu.espoch.aplicativo.R
+import ec.edu.espoch.aplicativo.cantones.CantonesContract
+import ec.edu.espoch.aplicativo.cantones.CantonesMain
 import ec.edu.espoch.aplicativo.cantones.presenter.CantonesPresenter
 
-class CantonFragment : Fragment() {
+class CantonFragment : Fragment(), CantonesContract.View {
 
-    private lateinit var presenter: CantonesPresenter
+    private lateinit var presenter: CantonesContract.Presenter
     private lateinit var adapter: CantonesAdapter
     private lateinit var recyclerView: RecyclerView
 
@@ -35,8 +37,19 @@ class CantonFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
-        val cantonesViewImpl = CantonesViewImpl(adapter)
-        presenter = CantonesPresenter(cantonesViewImpl)
-        presenter.cargarCantones()
+        presenter = CantonesPresenter(this)
+        presenter.loadCantones()
+    }
+
+    override fun showLoader() {
+        // Mostrar un indicador de carga
+    }
+
+    override fun hideLoader() {
+        // Ocultar el indicador de carga
+    }
+
+    override fun showCantones(cantones: List<CantonesMain>) {
+        adapter.setCantones(cantones)
     }
 }

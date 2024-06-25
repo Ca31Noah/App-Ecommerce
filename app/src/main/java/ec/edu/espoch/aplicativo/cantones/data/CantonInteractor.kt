@@ -2,9 +2,10 @@ package ec.edu.espoch.aplicativo.cantones.data
 
 import android.os.Handler
 import android.os.Looper
+import ec.edu.espoch.aplicativo.cantones.CantonesContract
 import ec.edu.espoch.aplicativo.cantones.CantonesMain
 
-class CantonInteractor {
+class CantonInteractor : CantonesContract.OnResponseCallBack {
 
     fun getCantones(callback: (List<CantonesMain>) -> Unit) {
         val cantones = listOf(
@@ -33,5 +34,9 @@ class CantonInteractor {
         Handler(Looper.getMainLooper()).postDelayed({
             callback(cantones)
         }, 500)
+    }
+
+    override fun onResponse(cantones: List<CantonesMain>) {
+        // Aquí puedes manejar la respuesta si es necesario
     }
 }
