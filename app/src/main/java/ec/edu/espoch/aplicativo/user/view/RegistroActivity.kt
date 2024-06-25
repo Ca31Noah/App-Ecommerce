@@ -1,11 +1,13 @@
-package ec.edu.espoch.aplicativo.user
+package ec.edu.espoch.aplicativo.user.view
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
+import ec.edu.espoch.aplicativo.user.Usuario
 import ec.edu.espoch.aplicativo.user.data.RegisterInteractor
 import ec.edu.espoch.aplicativo.user.presenter.RegisterContract
 import ec.edu.espoch.aplicativo.user.presenter.RegisterPresenter
@@ -21,7 +23,7 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro_usuario)
+        setContentView(R.layout.activity_registro)
 
         // Inicializar vistas usando findViewById
         editTextNombre = findViewById(R.id.editTextNombre)
@@ -33,7 +35,7 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
         // Crear instancia del interactor y presentador
         val interactor = RegisterInteractor()
         presenter = RegisterPresenter(interactor)
-        presenter.setView(this) // Inicialización de 'view' en el presentador
+        presenter.setView(this) // Inicialización de la vista
 
         // Lógica para manejar el evento de agregar usuario
         buttonRegistrar.setOnClickListener {
@@ -43,16 +45,18 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
             val password = editTextPassword.text.toString()
 
             val usuario = Usuario(nombre, apellido, correo, password)
+            Log.d("RegistroActivity", "Enviando usuario: $usuario")
             presenter.agregarUsuario(usuario)
         }
     }
 
     override fun mostrarMensajeExito() {
         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
-        // Aquí podrías cerrar la actividad o realizar otra acción
+        Log.d("RegistroActivity", "Usuario registrado correctamente")
     }
 
     override fun mostrarMensajeError(error: String) {
         Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+        Log.e("RegistroActivity", "Error: $error")
     }
 }

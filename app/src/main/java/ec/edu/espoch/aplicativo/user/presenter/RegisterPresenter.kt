@@ -5,13 +5,11 @@ import ec.edu.espoch.aplicativo.user.data.RegisterInteractor
 
 class RegisterPresenter(private val interactor: RegisterInteractor) : RegisterContract.Presenter {
 
-    private lateinit var view: RegisterContract.View
-
     override fun agregarUsuario(usuario: Usuario) {
         interactor.agregarUsuario(usuario)
     }
 
-    override fun setView(view: RegisterContract.View) {
-        this.view = view
+    override fun setView(view: RegisterContract.View) { // Añadir override aquí
+        interactor.setView(view)
     }
 }

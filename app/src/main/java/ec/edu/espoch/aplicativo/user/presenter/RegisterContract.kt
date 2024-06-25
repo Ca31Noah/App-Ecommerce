@@ -11,6 +11,6 @@ interface RegisterContract {
 
     interface Presenter {
         fun agregarUsuario(usuario: Usuario)
-        fun setView(view: View)
+        fun setView(view: View) // Añadir esta línea para definir setView en la interfaz Presenter
     }
 }

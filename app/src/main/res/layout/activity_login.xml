@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/etCorreo"
+        android:id="@+id/editTextCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo electrónico"
@@ -12,21 +13,20 @@
         android:layout_marginBottom="8dp"/>
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_below="@id/etCorreo"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_below="@id/editTextCorreo"
+        android:layout_marginBottom="8dp"/>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar sesión"
-        android:layout_below="@id/etPassword"
+        android:text="Iniciar Sesión"
+        android:layout_below="@id/editTextPassword"
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
