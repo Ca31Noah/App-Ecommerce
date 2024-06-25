@@ -2,7 +2,7 @@ package ec.edu.espoch.aplicativo.user.data
 
 import android.util.Log
 import ec.edu.espoch.aplicativo.user.Usuario
-import ec.edu.espoch.aplicativo.user.presenter.RegisterContract
+import ec.edu.espoch.aplicativo.user.RegisterContract
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

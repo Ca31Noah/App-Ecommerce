@@ -1,4 +1,4 @@
-package ec.edu.espoch.aplicativo.user.presenter
+package ec.edu.espoch.aplicativo.user
 
 interface LoginContract {
 

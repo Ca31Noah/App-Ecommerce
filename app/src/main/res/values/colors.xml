@@ -4,4 +4,6 @@
     <color name="colorPrimary">#7B5BF2</color>
     <color name="darker_gray">#70b67c</color>
     <color name="green_light">#b8dbbc</color>
+    <color name="purple">#800080</color>
+    <color name="gris">#c7cdf0</color>
 </resources>

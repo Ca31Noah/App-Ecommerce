@@ -1,5 +1,6 @@
 package ec.edu.espoch.aplicativo.user.presenter
 
+import ec.edu.espoch.aplicativo.user.LoginContract
 import ec.edu.espoch.aplicativo.user.data.LoginInteractor
 
 class LoginPresenter(private val interactor: LoginInteractor) : LoginContract.Presenter {

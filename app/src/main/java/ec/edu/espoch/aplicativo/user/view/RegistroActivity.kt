@@ -7,9 +7,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
+import ec.edu.espoch.aplicativo.user.RegisterContract
 import ec.edu.espoch.aplicativo.user.Usuario
 import ec.edu.espoch.aplicativo.user.data.RegisterInteractor
-import ec.edu.espoch.aplicativo.user.presenter.RegisterContract
 import ec.edu.espoch.aplicativo.user.presenter.RegisterPresenter
 
 class RegistroActivity : AppCompatActivity(), RegisterContract.View {

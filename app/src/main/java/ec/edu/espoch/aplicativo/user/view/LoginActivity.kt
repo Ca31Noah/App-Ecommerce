@@ -6,8 +6,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
+import ec.edu.espoch.aplicativo.user.LoginContract
 import ec.edu.espoch.aplicativo.user.data.LoginInteractor
-import ec.edu.espoch.aplicativo.user.presenter.LoginContract
 import ec.edu.espoch.aplicativo.user.presenter.LoginPresenter
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {

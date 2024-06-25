@@ -1,6 +1,4 @@
-package ec.edu.espoch.aplicativo.user.presenter
-
-import ec.edu.espoch.aplicativo.user.Usuario
+package ec.edu.espoch.aplicativo.user
 
 interface RegisterContract {
 

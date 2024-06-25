@@ -1,32 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextCorreo"
+    <TextView
+        android:id="@+id/textViewTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        android:layout_marginBottom="8dp"/>
+        android:text="Bienvenidos"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"/>
 
-    <EditText
-        android:id="@+id/editTextPassword"
+    <TextView
+        android:id="@+id/textViewSubtitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:layout_below="@id/editTextCorreo"
-        android:layout_marginBottom="8dp"/>
+        android:text="Ingrese sus credenciales"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewTitulo"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewSubtitulo"
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxCornerRadiusTopStart="24dp"
+        app:boxCornerRadiusTopEnd="24dp"
+        app:boxCornerRadiusBottomStart="24dp"
+        app:boxCornerRadiusBottomEnd="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="@color/gris"
+            android:drawableStart="@drawable/ic_mail"
+            android:drawablePadding="8dp"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutCorreo"
+        android:layout_marginBottom="24dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:boxStrokeColor="@android:color/darker_gray"
+        app:boxCornerRadiusTopStart="24dp"
+        app:boxCornerRadiusTopEnd="24dp"
+        app:boxCornerRadiusBottomStart="24dp"
+        app:boxCornerRadiusBottomEnd="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:backgroundTint="@color/gris"
+            android:drawableStart="@drawable/ic_pass"
+            android:drawablePadding="8dp"
+            android:background="@drawable/rounded_bg"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
-        android:layout_below="@id/editTextPassword"
+        android:layout_below="@id/textInputLayoutPassword"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/purple"
+        android:text="Iniciar Sesión" />
+
+    <TextView
+        android:id="@+id/textViewOlvidastePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textColor="#0000FF"
+        android:layout_below="@id/buttonLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/textViewNoCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿No tienes cuenta? Registrarse"
+        android:textColor="#0000FF"
+        android:layout_below="@id/textViewOlvidastePassword"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
