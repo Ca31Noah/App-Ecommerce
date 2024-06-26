@@ -1,5 +1,5 @@
 // Empresa.kt
-package ec.edu.espoch.aplicativo.Empresas.Model
+package ec.edu.espoch.aplicativo.Empresas
 
 data class Empresa(
     val id: String,

@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import ec.edu.espoch.aplicativo.Empresas.Model.Empresa
+import ec.edu.espoch.aplicativo.Empresas.Empresa
 import ec.edu.espoch.aplicativo.R
 
 

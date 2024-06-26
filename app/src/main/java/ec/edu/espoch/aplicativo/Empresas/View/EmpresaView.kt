@@ -1,6 +1,6 @@
 package ec.edu.espoch.aplicativo.Empresas.View
 
-import ec.edu.espoch.aplicativo.Empresas.Model.Empresa
+import ec.edu.espoch.aplicativo.Empresas.Empresa
 
 
 interface EmpresaView {

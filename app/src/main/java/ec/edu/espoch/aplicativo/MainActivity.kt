@@ -8,7 +8,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import ec.edu.espoch.aplicativo.Empresas.View.EmpresaActivity
 
 class MainActivity : AppCompatActivity() {
 
