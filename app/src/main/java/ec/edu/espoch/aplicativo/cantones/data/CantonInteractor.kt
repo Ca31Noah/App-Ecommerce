@@ -7,6 +7,13 @@ import ec.edu.espoch.aplicativo.cantones.CantonesMain
 
 class CantonInteractor : CantonesContract.OnResponseCallBack {
 
+    private val empresasPorCanton: Map<Int, List<String>> = mapOf(
+        1 to listOf("1", "2"), // Cantón Coca tiene empresas con ID 1 y 2
+        2 to listOf("3", "4"), // Cantón Sacha tiene empresas con ID 3 y 4
+        3 to listOf("5", "6"), // Cantón Loreto tiene empresas con ID 5 y 6
+        4 to listOf("7", "8")  // Cantón Aguarico tiene empresas con ID 7 y 8
+    )
+
     fun getCantones(callback: (List<CantonesMain>) -> Unit) {
         val cantones = listOf(
             CantonesMain(
@@ -38,5 +45,9 @@ class CantonInteractor : CantonesContract.OnResponseCallBack {
 
     override fun onResponse(cantones: List<CantonesMain>) {
         // Aquí puedes manejar la respuesta si es necesario
+    }
+
+    fun getEmpresasPorCanton(cantonId: Int): List<String> {
+        return empresasPorCanton[cantonId] ?: emptyList()
     }
 }

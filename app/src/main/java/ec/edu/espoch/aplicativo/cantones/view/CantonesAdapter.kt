@@ -3,6 +3,7 @@ package ec.edu.espoch.aplicativo.cantones.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,10 @@ import com.squareup.picasso.Picasso
 import ec.edu.espoch.aplicativo.R
 import ec.edu.espoch.aplicativo.cantones.CantonesMain
 
-class CantonesAdapter(private val onItemClick: (CantonesMain) -> Unit) : RecyclerView.Adapter<CantonesAdapter.CantonesViewHolder>() {
+class CantonesAdapter(
+    private val onItemClick: (CantonesMain) -> Unit,
+    private val onVerEmpresasClick: (CantonesMain) -> Unit
+) : RecyclerView.Adapter<CantonesAdapter.CantonesViewHolder>() {
 
     private var cantones: List<CantonesMain> = listOf()
 
@@ -36,6 +40,7 @@ class CantonesAdapter(private val onItemClick: (CantonesMain) -> Unit) : Recycle
     inner class CantonesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val photoImageView: ImageView = itemView.findViewById(R.id.imageViewCanton)
         private val nameTextView: TextView = itemView.findViewById(R.id.textViewCantonName)
+        private val verEmpresasButton: Button = itemView.findViewById(R.id.buttonVerEmpresas)
 
         fun bind(canton: CantonesMain) {
             nameTextView.text = canton.name
@@ -43,6 +48,10 @@ class CantonesAdapter(private val onItemClick: (CantonesMain) -> Unit) : Recycle
 
             itemView.setOnClickListener {
                 onItemClick(canton)
+            }
+
+            verEmpresasButton.setOnClickListener {
+                onVerEmpresasClick(canton)
             }
         }
     }
