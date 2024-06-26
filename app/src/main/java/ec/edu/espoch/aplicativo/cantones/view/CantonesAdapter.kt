@@ -39,7 +39,7 @@ class CantonesAdapter(private val onItemClick: (CantonesMain) -> Unit) : Recycle
 
         fun bind(canton: CantonesMain) {
             nameTextView.text = canton.name
-            Picasso.get().load(canton.photoUrl).placeholder(R.drawable.placeholder_image).into(photoImageView)
+            Picasso.get().load(canton.photoUrl).placeholder(R.drawable.placeholder_image1).into(photoImageView)
 
             itemView.setOnClickListener {
                 onItemClick(canton)

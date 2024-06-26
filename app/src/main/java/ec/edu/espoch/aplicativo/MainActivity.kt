@@ -1,12 +1,15 @@
 package ec.edu.espoch.aplicativo
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ec.edu.espoch.aplicativo.Empresas.View.EmpresaActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +34,6 @@ class MainActivity : AppCompatActivity() {
         // Configurar BottomNavigationView con NavController
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         NavigationUI.setupWithNavController(navView, navController)
+
     }
 }
