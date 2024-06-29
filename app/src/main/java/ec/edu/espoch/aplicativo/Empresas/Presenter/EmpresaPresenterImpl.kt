@@ -1,8 +1,8 @@
 package ec.edu.espoch.aplicativo.Empresas.Presenter
 
-import ec.edu.espoch.aplicativo.Empresas.View.EmpresaView
 import ec.edu.espoch.aplicativo.Empresas.Empresa
 import ec.edu.espoch.aplicativo.Empresas.Model.RetrofitClient
+import ec.edu.espoch.aplicativo.Empresas.View.EmpresaView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

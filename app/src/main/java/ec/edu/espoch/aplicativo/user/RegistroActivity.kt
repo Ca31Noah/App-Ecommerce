@@ -1,14 +1,11 @@
-package ec.edu.espoch.aplicativo.user.view
+package ec.edu.espoch.aplicativo.user
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
-import ec.edu.espoch.aplicativo.user.RegisterContract
-import ec.edu.espoch.aplicativo.user.Usuario
 import ec.edu.espoch.aplicativo.user.data.RegisterInteractor
 import ec.edu.espoch.aplicativo.user.presenter.RegisterPresenter
 
@@ -45,18 +42,15 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
             val password = editTextPassword.text.toString()
 
             val usuario = Usuario(nombre, apellido, correo, password)
-            Log.d("RegistroActivity", "Enviando usuario: $usuario")
             presenter.agregarUsuario(usuario)
         }
     }
 
     override fun mostrarMensajeExito() {
         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
-        Log.d("RegistroActivity", "Usuario registrado correctamente")
     }
 
     override fun mostrarMensajeError(error: String) {
         Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
-        Log.e("RegistroActivity", "Error: $error")
     }
 }

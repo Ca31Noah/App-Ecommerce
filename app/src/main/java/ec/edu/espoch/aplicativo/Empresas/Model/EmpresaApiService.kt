@@ -6,9 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface EmpresaApiService {
-    @GET("buscar_producto.php")
+    @GET("listar_empresas.php")
     fun obtenerEmpresas(): Call<List<Empresa>>
 
-    @GET("buscar_producto_por_canton.php")
+    @GET("listar_empresas_canton.php")
     fun obtenerEmpresasPorCanton(@Query("id_canton") idCanton: Int): Call<List<Empresa>>
 }

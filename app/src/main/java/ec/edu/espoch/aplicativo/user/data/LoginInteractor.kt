@@ -1,6 +1,5 @@
 package ec.edu.espoch.aplicativo.user.data
 
-import android.util.Log
 import ec.edu.espoch.aplicativo.user.LoginContract
 import retrofit2.Call
 import retrofit2.Callback
@@ -9,7 +8,7 @@ import retrofit2.Response
 class LoginInteractor {
 
     private val apiService = ApiClient.retrofit.create(ApiService::class.java)
-    private lateinit var view: LoginContract.View
+    private lateinit var callback: LoginContract.OnResponseCallBack
 
     fun login(correo: String, password: String) {
         val request = LoginRequest(correo, password)
@@ -19,30 +18,25 @@ class LoginInteractor {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
-                    if (loginResponse != null) {
-                        if (loginResponse.usuario != null) {
-                            view.mostrarMensajeExito("¡Inicio de sesión exitoso!")
-                            // Aquí podrías guardar el usuario en sesión o realizar otras acciones
-                        } else {
-                            view.mostrarMensajeError("Credenciales incorrectas")
-                        }
+                    if (loginResponse?.usuario != null) {
+                        callback.onResponseSuccess()
                     } else {
-                        view.mostrarMensajeError("Respuesta nula del servidor")
+                        callback.onResponseError("Credenciales incorrectas")
                     }
                 } else {
-                    Log.e("LoginInteractor", "Error: ${response.code()} - ${response.message()}")
-                    view.mostrarMensajeError("Error: ${response.code()} - ${response.message()}")
+                    val errorMsg = "Error: ${response.code()} - ${response.message()}"
+                    callback.onResponseError(errorMsg)
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("LoginInteractor", "Error al conectar con el servidor: ${t.message}")
-                view.mostrarMensajeError("Error al conectar con el servidor: ${t.message}")
+                val errorMsg = "Error al conectar con el servidor: ${t.message}"
+                callback.onResponseError(errorMsg)
             }
         })
     }
 
-    fun setView(view: LoginContract.View) {
-        this.view = view
+    fun setCallback(callback: LoginContract.OnResponseCallBack) {
+        this.callback = callback
     }
 }

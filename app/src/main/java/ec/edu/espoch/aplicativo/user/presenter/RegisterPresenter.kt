@@ -10,7 +10,7 @@ class RegisterPresenter(private val interactor: RegisterInteractor) : RegisterCo
         interactor.agregarUsuario(usuario)
     }
 
-    override fun setView(view: RegisterContract.View) { // Añadir override aquí
+    override fun setView(view: RegisterContract.View) {
         interactor.setView(view)
     }
 }

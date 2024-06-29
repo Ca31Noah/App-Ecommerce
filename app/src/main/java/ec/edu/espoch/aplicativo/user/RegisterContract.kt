@@ -9,6 +9,10 @@ interface RegisterContract {
 
     interface Presenter {
         fun agregarUsuario(usuario: Usuario)
-        fun setView(view: View) // Añadir esta línea para definir setView en la interfaz Presenter
+        fun setView(view: View)
+    }
+
+    interface OnResponseCallBack {
+        fun onResponse(success: Boolean, errorMessage: String?)
     }
 }
