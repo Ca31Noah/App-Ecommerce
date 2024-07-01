@@ -15,6 +15,7 @@ class LoginPresenter(private val interactor: LoginInteractor) : LoginContract.Pr
     override fun onResponseSuccess() {
         view.hideLoader()
         view.mostrarMensajeExito("¡Inicio de sesión exitoso!")
+        view.navigateToMain()
     }
 
     override fun onResponseError(mensaje: String) {

@@ -5,4 +5,7 @@
     <string name="title_profile">Acerca de</string>
     <string name="title_products">Productos</string>
     <string name="title_image_description">Imagen</string>
+    <string name="notienescuenta">¿No tienes cuenta? <font color="#6033ba">Registrarse</font></string>
+    <string name="tienescuenta">¿Ya tienes cuenta? <font color="#6033ba">Inicia Sesión</font></string>
+    <string name="olvidastepass">Olvidaste tu contraseña</string>
 </resources>

@@ -1,7 +1,9 @@
 package ec.edu.espoch.aplicativo.login.view
 
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
+import ec.edu.espoch.aplicativo.MainActivity
 import ec.edu.espoch.aplicativo.login.LoginContract
 
 class LoginView(private val context: Context) : LoginContract.View {
@@ -23,5 +25,11 @@ class LoginView(private val context: Context) : LoginContract.View {
 
     override fun mostrarMensajeError(mensaje: String) {
         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun navigateToMain() {
+        val intent = Intent(context, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        context.startActivity(intent)
     }
 }

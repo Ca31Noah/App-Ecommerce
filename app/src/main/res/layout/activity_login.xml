@@ -92,20 +92,23 @@
         android:id="@+id/textViewOlvidastePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Olvidaste tu contraseña?"
-        android:textColor="#0000FF"
         android:layout_below="@id/buttonLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="24dp"
+        android:text="@string/olvidastepass"
+        android:textColor="#6033ba" />
 
     <TextView
         android:id="@+id/textViewNoCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿No tienes cuenta? Registrarse"
-        android:textColor="#0000FF"
         android:layout_below="@id/textViewOlvidastePassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:text="@string/notienescuenta"
+        android:textColor="#000000"
+        android:clickable="true"
+        android:focusable="true" />
+
 
 </RelativeLayout>

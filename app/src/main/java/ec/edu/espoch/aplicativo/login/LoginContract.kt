@@ -7,6 +7,7 @@ interface LoginContract {
         fun hideLoader()
         fun mostrarMensajeExito(mensaje: String)
         fun mostrarMensajeError(mensaje: String)
+        fun navigateToMain()
     }
 
     interface Presenter {
