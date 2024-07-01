@@ -20,9 +20,5 @@
         android:name="ec.edu.espoch.aplicativo.home.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/productFragment"
-        android:name="ec.edu.espoch.aplicativo.products.view.ProductFragment"
-        android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+
 </navigation>

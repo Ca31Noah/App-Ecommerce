@@ -1,16 +1,16 @@
-package ec.edu.espoch.aplicativo.user.view
+package ec.edu.espoch.aplicativo.register
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
-import ec.edu.espoch.aplicativo.user.RegisterContract
-import ec.edu.espoch.aplicativo.user.Usuario
-import ec.edu.espoch.aplicativo.user.data.RegisterInteractor
-import ec.edu.espoch.aplicativo.user.presenter.RegisterPresenter
+import ec.edu.espoch.aplicativo.login.LoginActivity
+import ec.edu.espoch.aplicativo.register.data.RegisterInteractor
+import ec.edu.espoch.aplicativo.register.presenter.RegisterPresenter
 
 class RegistroActivity : AppCompatActivity(), RegisterContract.View {
 
@@ -20,6 +20,7 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
     private lateinit var editTextCorreo: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var buttonRegistrar: Button
+    private lateinit var textViewYaCuenta: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,7 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
         editTextCorreo = findViewById(R.id.editTextCorreo)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonRegistrar = findViewById(R.id.buttonRegistrar)
+        textViewYaCuenta = findViewById(R.id.textViewYaCuenta)
 
         // Crear instancia del interactor y presentador
         val interactor = RegisterInteractor()
@@ -45,18 +47,21 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
             val password = editTextPassword.text.toString()
 
             val usuario = Usuario(nombre, apellido, correo, password)
-            Log.d("RegistroActivity", "Enviando usuario: $usuario")
             presenter.agregarUsuario(usuario)
+        }
+
+        // Navegación a la actividad de inicio de sesión al hacer clic en "¿Ya tienes cuenta?"
+        textViewYaCuenta.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
     override fun mostrarMensajeExito() {
         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
-        Log.d("RegistroActivity", "Usuario registrado correctamente")
     }
 
     override fun mostrarMensajeError(error: String) {
         Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
-        Log.e("RegistroActivity", "Error: $error")
     }
 }

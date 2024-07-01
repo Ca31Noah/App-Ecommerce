@@ -62,7 +62,7 @@ class CantonFragment : Fragment(), CantonesContract.View {
 
     private fun mostrarEmpresasDelCanton(canton: CantonesMain) {
         val intent = Intent(context, EmpresaActivity::class.java)
-        intent.putExtra("idCanton", canton.id) // Pasar el id del cantón a EmpresaActivity si es necesario
+        intent.putExtra("cantonId", canton.id) // Corregido: "cantonId" en lugar de "idCanton"
         startActivity(intent)
     }
 }

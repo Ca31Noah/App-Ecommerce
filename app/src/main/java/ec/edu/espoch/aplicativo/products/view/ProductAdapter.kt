@@ -3,10 +3,12 @@ package ec.edu.espoch.aplicativo.products.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ec.edu.espoch.aplicativo.R
 import ec.edu.espoch.aplicativo.products.Product
 
@@ -27,6 +29,7 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(Pr
         private val typeTextView: TextView = itemView.findViewById(R.id.productType)
         private val priceTextView: TextView = itemView.findViewById(R.id.productPrice)
         private val companyIdTextView: TextView = itemView.findViewById(R.id.productCompanyId)
+        private val productImageView: ImageView = itemView.findViewById(R.id.productImage)
 
         fun bind(product: Product) {
             nameTextView.text = product.Nombre
@@ -34,6 +37,11 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(Pr
             typeTextView.text = product.Tipo
             priceTextView.text = product.Precio.toString()
             companyIdTextView.text = product.id_empresa.toString()
+
+            // Cargar la imagen desde la URL usando Glide
+            Glide.with(itemView.context)
+                .load(product.imagenUrl)
+                .into(productImageView)
         }
     }
 

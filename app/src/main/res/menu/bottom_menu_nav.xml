@@ -6,7 +6,7 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/productFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/cart"
         android:title="@string/title_loans" />
 
@@ -14,9 +14,5 @@
         android:id="@+id/aboutFragment"
         android:icon="@drawable/user_tie"
         android:title="@string/title_profile" />
-    <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/user_tie"
-        android:title="@string/title_products" />
 
 </menu>
