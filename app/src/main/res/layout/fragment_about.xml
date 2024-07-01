@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darker_gray">
+
+    <!-- Contenedor para la imagen -->
+    <LinearLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/green_light"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="18dp">
+
+        <!-- Imagen -->
+        <ImageView
+            android:id="@+id/imageViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/title_image_description"
+            android:src="@drawable/espoch2" />
+    </LinearLayout>
+
+    <!-- RecyclerView para mostrar la lista de cantones -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAbout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerContainer"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>
+
+

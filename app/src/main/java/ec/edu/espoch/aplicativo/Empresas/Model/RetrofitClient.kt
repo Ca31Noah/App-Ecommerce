@@ -5,11 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-<<<<<<< HEAD
-    private const val BASE_URL = "http://192.168.1.15/android_mysql/buscar_producto.php/" // Reemplaza con la dirección IP de tu servidor
-=======
-    private const val BASE_URL = "http://192.168.2.111/android_mysql/" // Reemplaza con la dirección IP de tu servidor
->>>>>>> 6e5e23237813ae028e78e789af13b926c73f5c0b
+    private const val BASE_URL = "http://192.168.25.1/android_mysql/" // Reemplaza con la dirección IP de tu servidor
 
     val apiService: EmpresaApiService by lazy {
         Retrofit.Builder()
