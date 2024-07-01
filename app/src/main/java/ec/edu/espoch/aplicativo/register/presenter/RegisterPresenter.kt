@@ -1,8 +1,8 @@
-package ec.edu.espoch.aplicativo.user.presenter
+package ec.edu.espoch.aplicativo.register.presenter
 
-import ec.edu.espoch.aplicativo.user.RegisterContract
-import ec.edu.espoch.aplicativo.user.Usuario
-import ec.edu.espoch.aplicativo.user.data.RegisterInteractor
+import ec.edu.espoch.aplicativo.register.RegisterContract
+import ec.edu.espoch.aplicativo.register.Usuario
+import ec.edu.espoch.aplicativo.register.data.RegisterInteractor
 
 class RegisterPresenter(private val interactor: RegisterInteractor) : RegisterContract.Presenter {
 

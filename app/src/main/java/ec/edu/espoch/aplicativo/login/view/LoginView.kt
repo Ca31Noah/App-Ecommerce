@@ -1,8 +1,8 @@
-package ec.edu.espoch.aplicativo.user.view
+package ec.edu.espoch.aplicativo.login.view
 
 import android.content.Context
 import android.widget.Toast
-import ec.edu.espoch.aplicativo.user.LoginContract
+import ec.edu.espoch.aplicativo.login.LoginContract
 
 class LoginView(private val context: Context) : LoginContract.View {
 

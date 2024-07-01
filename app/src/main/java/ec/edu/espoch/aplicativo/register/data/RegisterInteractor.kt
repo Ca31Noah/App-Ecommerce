@@ -1,7 +1,7 @@
-package ec.edu.espoch.aplicativo.user.data
+package ec.edu.espoch.aplicativo.register.data
 
-import ec.edu.espoch.aplicativo.user.RegisterContract
-import ec.edu.espoch.aplicativo.user.Usuario
+import ec.edu.espoch.aplicativo.register.RegisterContract
+import ec.edu.espoch.aplicativo.register.Usuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

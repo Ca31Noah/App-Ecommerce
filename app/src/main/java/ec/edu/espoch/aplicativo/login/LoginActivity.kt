@@ -1,13 +1,13 @@
-package ec.edu.espoch.aplicativo.user
+package ec.edu.espoch.aplicativo.login
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
-import ec.edu.espoch.aplicativo.user.data.LoginInteractor
-import ec.edu.espoch.aplicativo.user.presenter.LoginPresenter
-import ec.edu.espoch.aplicativo.user.view.LoginView
+import ec.edu.espoch.aplicativo.login.data.LoginInteractor
+import ec.edu.espoch.aplicativo.login.presenter.LoginPresenter
+import ec.edu.espoch.aplicativo.login.view.LoginView
 
 class LoginActivity : AppCompatActivity() {
 

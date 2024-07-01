@@ -1,7 +1,7 @@
-package ec.edu.espoch.aplicativo.user.presenter
+package ec.edu.espoch.aplicativo.login.presenter
 
-import ec.edu.espoch.aplicativo.user.LoginContract
-import ec.edu.espoch.aplicativo.user.data.LoginInteractor
+import ec.edu.espoch.aplicativo.login.LoginContract
+import ec.edu.espoch.aplicativo.login.data.LoginInteractor
 
 class LoginPresenter(private val interactor: LoginInteractor) : LoginContract.Presenter, LoginContract.OnResponseCallBack {
 

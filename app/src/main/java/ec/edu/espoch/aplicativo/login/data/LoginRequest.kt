@@ -1,4 +1,4 @@
-package ec.edu.espoch.aplicativo.user.data
+package ec.edu.espoch.aplicativo.login.data
 
 data class LoginRequest(
     val correo: String,

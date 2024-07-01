@@ -19,7 +19,7 @@ class EmpresaActivity : AppCompatActivity(), EmpresaView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_empresas)
+        setContentView(R.layout.activity_empresas)
 
         cantonId = intent.getIntExtra("cantonId", 0)
 

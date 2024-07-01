@@ -1,5 +1,5 @@
 // ProductActivity.kt
-package ec.edu.espoch.aplicativo.products.view
+package ec.edu.espoch.aplicativo.products
 
 import android.os.Bundle
 import android.widget.Toast
@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ec.edu.espoch.aplicativo.R
-import ec.edu.espoch.aplicativo.products.Product
 import ec.edu.espoch.aplicativo.products.data.ProductInteractor
 import ec.edu.espoch.aplicativo.products.presenter.ProductPresenter
+import ec.edu.espoch.aplicativo.products.view.ProductAdapter
+import ec.edu.espoch.aplicativo.products.view.ProductView
 
 class ProductActivity : AppCompatActivity(), ProductView {
 

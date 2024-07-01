@@ -1,8 +1,8 @@
-package ec.edu.espoch.aplicativo.user.view
+package ec.edu.espoch.aplicativo.register.view
 
 import android.content.Context
 import android.widget.Toast
-import ec.edu.espoch.aplicativo.user.RegisterContract
+import ec.edu.espoch.aplicativo.register.RegisterContract
 
 class RegisterView(private val context: Context) : RegisterContract.View {
     override fun mostrarMensajeExito() {

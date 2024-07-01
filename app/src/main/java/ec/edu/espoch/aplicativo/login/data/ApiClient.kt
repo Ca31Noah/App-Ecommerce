@@ -1,4 +1,4 @@
-package ec.edu.espoch.aplicativo.user.data
+package ec.edu.espoch.aplicativo.login.data
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

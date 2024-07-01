@@ -1,6 +1,8 @@
-package ec.edu.espoch.aplicativo.user.data
+package ec.edu.espoch.aplicativo.login.data
 
-import ec.edu.espoch.aplicativo.user.LoginContract
+import ec.edu.espoch.aplicativo.login.LoginContract
+import ec.edu.espoch.aplicativo.register.data.ApiClient
+import ec.edu.espoch.aplicativo.register.data.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

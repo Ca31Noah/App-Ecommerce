@@ -1,4 +1,4 @@
-package ec.edu.espoch.aplicativo.user
+package ec.edu.espoch.aplicativo.register
 
 interface RegisterContract {
 

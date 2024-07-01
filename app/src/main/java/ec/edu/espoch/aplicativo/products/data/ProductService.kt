@@ -6,6 +6,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ProductService {
-    @GET("listar.php") // Asegúrate de que este endpoint sea correcto
+    @GET("listar_productos.php") // Asegúrate de que este endpoint sea correcto
     fun getProducts(): Call<List<Product>>
 }

@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration.Builder(
             R.id.homeFragment,
             R.id.cantonFragment,
-            R.id.aboutFragment,
-            R.id.productFragment
+            R.id.aboutFragment
         ).build()
 
         // Configurar BottomNavigationView con NavController
