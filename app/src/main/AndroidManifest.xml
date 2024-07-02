@@ -29,6 +29,8 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".register.RegistroActivity"/>
         <activity android:name=".Empresas.View.EmpresaActivity"/>
+        <activity android:name=".products.ProductActivity"/>
+
 
     </application>
 

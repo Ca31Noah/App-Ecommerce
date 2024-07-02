@@ -1,5 +1,6 @@
 package ec.edu.espoch.aplicativo.Empresas.View
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import ec.edu.espoch.aplicativo.Empresas.Empresa
 import ec.edu.espoch.aplicativo.Empresas.Presenter.EmpresaPresenter
 import ec.edu.espoch.aplicativo.Empresas.Presenter.EmpresaPresenterImpl
 import ec.edu.espoch.aplicativo.R
+import ec.edu.espoch.aplicativo.products.ProductActivity
 
 class EmpresaActivity : AppCompatActivity(), EmpresaView {
 
@@ -23,23 +25,23 @@ class EmpresaActivity : AppCompatActivity(), EmpresaView {
 
         cantonId = intent.getIntExtra("cantonId", 0)
 
-        // Configuración de la RecyclerView
         recyclerViewEmpresas = findViewById(R.id.recyclerViewEmpresas)
         recyclerViewEmpresas.layoutManager = LinearLayoutManager(this)
 
-        // Inicializar el Presenter
         empresaPresenter = EmpresaPresenterImpl(this)
         empresaPresenter.cargarEmpresasPorCanton(cantonId)
     }
 
     override fun mostrarEmpresas(empresas: List<Empresa>) {
-        // Asignar el adapter a la RecyclerView (pasando el contexto)
-        empresaAdapter = EmpresaAdapter(empresas, this)
+        empresaAdapter = EmpresaAdapter(empresas, this) { empresa ->
+            val intent = Intent(this, ProductActivity::class.java)
+            intent.putExtra("COMPANY_ID", empresa.id)
+            startActivity(intent)
+        }
         recyclerViewEmpresas.adapter = empresaAdapter
     }
 
     override fun mostrarError(mensaje: String) {
-        // Mostrar un Toast con el mensaje de error
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 }

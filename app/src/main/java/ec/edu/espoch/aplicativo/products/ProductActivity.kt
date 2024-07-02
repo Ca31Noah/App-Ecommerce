@@ -1,4 +1,3 @@
-// ProductActivity.kt
 package ec.edu.espoch.aplicativo.products
 
 import android.os.Bundle
@@ -28,7 +27,13 @@ class ProductActivity : AppCompatActivity(), ProductView {
         recyclerView.adapter = adapter
 
         presenter = ProductPresenter(this, ProductInteractor())
-        presenter.loadProducts()
+
+        val companyId = intent.getIntExtra("COMPANY_ID", -1)
+        if (companyId != -1) {
+            presenter.loadProductsByCompany(companyId)
+        } else {
+            presenter.loadProducts()
+        }
     }
 
     override fun showProducts(products: List<Product>) {

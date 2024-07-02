@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ProductInteractor : ProductsContract.Interactor {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.25.1/android_mysql/") //
+        .baseUrl("http://192.168.1.18/android_mysql/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -20,6 +20,27 @@ class ProductInteractor : ProductsContract.Interactor {
 
     override fun getProducts(callback: (List<Product>) -> Unit) {
         service.getProducts().enqueue(object : Callback<List<Product>> {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+                if (response.isSuccessful) {
+                    val products = response.body()
+                    if (products != null) {
+                        callback(products)
+                    } else {
+                        Log.e("ProductInteractor", "Response body is null")
+                    }
+                } else {
+                    Log.e("ProductInteractor", "Response not successful: ${response.errorBody()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+                Log.e("ProductInteractor", "Failed to fetch products", t)
+            }
+        })
+    }
+
+    override fun getProductsByCompany(companyId: Int, callback: (List<Product>) -> Unit) {
+        service.getProductsByCompany(companyId).enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 if (response.isSuccessful) {
                     val products = response.body()

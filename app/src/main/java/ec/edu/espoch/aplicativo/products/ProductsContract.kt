@@ -9,9 +9,11 @@ interface ProductsContract {
 
     interface Presenter {
         fun loadProducts()
+        fun loadProductsByCompany(companyId: Int)
     }
 
     interface Interactor {
         fun getProducts(callback: (List<Product>) -> Unit)
+        fun getProductsByCompany(companyId: Int, callback: (List<Product>) -> Unit)
     }
 }

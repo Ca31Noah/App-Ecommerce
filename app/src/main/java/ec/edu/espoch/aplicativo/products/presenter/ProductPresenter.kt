@@ -14,4 +14,14 @@ class ProductPresenter(private val view: ProductView, private val interactor: Pr
             }
         }
     }
+
+    override fun loadProductsByCompany(companyId: Int) {
+        interactor.getProductsByCompany(companyId) { products ->
+            if (products.isNotEmpty()) {
+                view.showProducts(products)
+            } else {
+                view.showError("No products found for company ID $companyId")
+            }
+        }
+    }
 }

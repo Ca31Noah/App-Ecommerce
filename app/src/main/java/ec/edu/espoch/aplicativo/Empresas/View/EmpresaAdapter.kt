@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,9 +12,11 @@ import com.bumptech.glide.Glide
 import ec.edu.espoch.aplicativo.Empresas.Empresa
 import ec.edu.espoch.aplicativo.R
 
-
-
-class EmpresaAdapter(private val empresas: List<Empresa>, private val context: Context) : RecyclerView.Adapter<EmpresaAdapter.EmpresaViewHolder>() {
+class EmpresaAdapter(
+    private val empresas: List<Empresa>,
+    private val context: Context,
+    private val onEmpresaClickListener: (Empresa) -> Unit
+) : RecyclerView.Adapter<EmpresaAdapter.EmpresaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmpresaViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_empresa, parent, false)
@@ -22,7 +25,7 @@ class EmpresaAdapter(private val empresas: List<Empresa>, private val context: C
 
     override fun onBindViewHolder(holder: EmpresaViewHolder, position: Int) {
         val empresa = empresas[position]
-        holder.bind(empresa)
+        holder.bind(empresa, onEmpresaClickListener)
     }
 
     override fun getItemCount(): Int {
@@ -35,21 +38,23 @@ class EmpresaAdapter(private val empresas: List<Empresa>, private val context: C
         private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
         private val contactoTextView: TextView = itemView.findViewById(R.id.tvContacto)
         private val direccionTextView: TextView = itemView.findViewById(R.id.tvDireccion)
-        private val imageViewEmpresa: ImageView = itemView.findViewById(R.id.imageViewEmpresa) // Asegúrate de que este ID coincida con el de tu ImageView
+        private val imageViewEmpresa: ImageView = itemView.findViewById(R.id.imageViewEmpresa)
+        private val verProductosButton: Button = itemView.findViewById(R.id.btnVerProductosServicios)
 
-        fun bind(empresa: Empresa) {
+        fun bind(empresa: Empresa, onEmpresaClickListener: (Empresa) -> Unit) {
             nombreTextView.text = empresa.Nombre
             propietarioTextView.text = empresa.Propietario
             emailTextView.text = empresa.Email
             contactoTextView.text = empresa.Contacto
             direccionTextView.text = empresa.Direccion
 
-            // Carga la imagen usando Glide
             Glide.with(itemView.context)
-                .load(empresa.imagenUrl) // Asegúrate de que tu modelo Empresa tenga una propiedad 'imagenUrl'
-                .placeholder(R.drawable.placeholder_image1) // Reemplaza con tu placeholder
-                .error(R.drawable.error_image) // Reemplaza con tu imagen de error
+                .load(empresa.imagenUrl)
+                .placeholder(R.drawable.placeholder_image1)
+                .error(R.drawable.error_image)
                 .into(imageViewEmpresa)
+
+            verProductosButton.setOnClickListener { onEmpresaClickListener(empresa) }
         }
     }
 }
