@@ -50,7 +50,6 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
             presenter.agregarUsuario(usuario)
         }
 
-        // Navegación a la actividad de inicio de sesión al hacer clic en "¿Ya tienes cuenta?"
         textViewYaCuenta.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -59,9 +58,24 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
 
     override fun mostrarMensajeExito() {
         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+        limpiarCampos()
+        redirigirALogin()
     }
 
     override fun mostrarMensajeError(error: String) {
         Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun limpiarCampos() {
+        editTextNombre.text.clear()
+        editTextApellido.text.clear()
+        editTextCorreo.text.clear()
+        editTextPassword.text.clear()
+    }
+
+    private fun redirigirALogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
