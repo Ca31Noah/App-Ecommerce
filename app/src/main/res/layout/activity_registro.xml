@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,20 +10,20 @@
     <!-- Título -->
     <TextView
         android:id="@+id/textViewTitulo"
-        android:layout_width="match_parent"
+        android:layout_width="376dp"
         android:layout_height="wrap_content"
-        android:text="Regístrate"
-        android:textSize="36sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:text="Bienvenido"
+        android:textSize="38sp"
+        android:textStyle="bold" />
 
     <!-- Subtítulo -->
     <TextView
         android:id="@+id/textViewSubtitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create una cuenta"
+        android:text="Crear una cuenta"
         android:textSize="18sp"
         android:gravity="center"
         android:layout_marginBottom="24dp" />
@@ -106,5 +108,14 @@
         android:clickable="true"
         android:focusable="true" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="394dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        app:srcCompat="@drawable/logo" />
 
-</LinearLayout>
+
+    </LinearLayout>
+
