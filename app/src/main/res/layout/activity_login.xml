@@ -109,6 +109,4 @@
         android:textColor="#000000"
         android:clickable="true"
         android:focusable="true" />
-
-
 </RelativeLayout>
