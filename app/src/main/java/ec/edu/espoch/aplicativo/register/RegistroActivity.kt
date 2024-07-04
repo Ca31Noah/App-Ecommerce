@@ -34,6 +34,13 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
         buttonRegistrar = findViewById(R.id.buttonRegistrar)
         textViewYaCuenta = findViewById(R.id.textViewYaCuenta)
 
+        // Configurar clic en "¿Ya tienes cuenta? Inicia sesión aquí"
+        textViewYaCuenta.setOnClickListener {
+            startActivity(Intent(this@RegistroActivity, LoginActivity::class.java))
+            // Opcional: finaliza la actividad actual si no quieres que el usuario vuelva a ella con el botón de retroceso
+            // finish()
+        }
+
         // Crear instancia del interactor y presentador
         val interactor = RegisterInteractor()
         presenter = RegisterPresenter(interactor)
@@ -46,20 +53,35 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
             val correo = editTextCorreo.text.toString()
             val password = editTextPassword.text.toString()
 
+            // Validaciones
+            if (!validarNombreApellido(nombre)) {
+                mostrarMensajeError("El nombre solo debe contener letras y espacios.")
+                return@setOnClickListener
+            }
+
+            if (!validarNombreApellido(apellido)) {
+                mostrarMensajeError("El apellido solo debe contener letras y espacios.")
+                return@setOnClickListener
+            }
+
+            if (!validarCorreo(correo)) {
+                mostrarMensajeError("El correo electrónico no es válido.")
+                return@setOnClickListener
+            }
+
+            if (!validarPassword(password)) {
+                mostrarMensajeError("La contraseña debe tener al menos 8 caracteres.")
+                return@setOnClickListener
+            }
+
             val usuario = Usuario(nombre, apellido, correo, password)
             presenter.agregarUsuario(usuario)
-        }
-
-        textViewYaCuenta.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
         }
     }
 
     override fun mostrarMensajeExito() {
         Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
         limpiarCampos()
-        redirigirALogin()
     }
 
     override fun mostrarMensajeError(error: String) {
@@ -73,9 +95,16 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
         editTextPassword.text.clear()
     }
 
-    private fun redirigirALogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
+    // Funciones de validación
+    private fun validarNombreApellido(campo: String): Boolean {
+        return campo.matches(Regex("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+\$"))
+    }
+
+    private fun validarCorreo(correo: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()
+    }
+
+    private fun validarPassword(password: String): Boolean {
+        return password.length >= 8
     }
 }
