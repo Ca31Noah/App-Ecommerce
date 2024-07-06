@@ -1,5 +1,6 @@
 package ec.edu.espoch.aplicativo.cantones.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,7 @@ class CantonesAdapter(
             }
 
             verEmpresasButton.setOnClickListener {
+                Log.d("CantonesAdapter", "Botón 'Ver Empresas' clicado para el cantón ID: ${canton.id}")
                 onVerEmpresasClick(canton)
             }
         }

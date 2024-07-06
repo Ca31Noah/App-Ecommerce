@@ -35,7 +35,7 @@ class EmpresaActivity : AppCompatActivity(), EmpresaView {
     override fun mostrarEmpresas(empresas: List<Empresa>) {
         empresaAdapter = EmpresaAdapter(empresas, this) { empresa ->
             val intent = Intent(this, ProductActivity::class.java)
-            intent.putExtra("COMPANY_ID", empresa.id)
+            intent.putExtra("COMPANY_ID", empresa.id_empresa)
             startActivity(intent)
         }
         recyclerViewEmpresas.adapter = empresaAdapter
