@@ -17,7 +17,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".login.LoginActivity"
 
             android:exported="true">
             <intent-filter>
@@ -26,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".register.RegistroActivity"/>
         <activity android:name=".Empresas.View.EmpresaActivity"/>
         <activity android:name=".products.ProductActivity"/>
