@@ -1,5 +1,6 @@
 package ec.edu.espoch.aplicativo.login.presenter
 
+import android.util.Patterns
 import ec.edu.espoch.aplicativo.login.LoginContract
 import ec.edu.espoch.aplicativo.login.data.LoginInteractor
 
@@ -8,6 +9,16 @@ class LoginPresenter(private val interactor: LoginInteractor) : LoginContract.Pr
     private lateinit var view: LoginContract.View
 
     override fun login(correo: String, password: String) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+            view.mostrarMensajeError("Correo no válido")
+            return
+        }
+
+        if (password.length < 8) {
+            view.mostrarMensajeError("La contraseña debe tener al menos 8 caracteres")
+            return
+        }
+
         view.showLoader()
         interactor.login(correo, password)
     }

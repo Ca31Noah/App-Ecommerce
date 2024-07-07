@@ -1,5 +1,6 @@
 package ec.edu.espoch.aplicativo.login.data
 
+import android.util.Log
 import ec.edu.espoch.aplicativo.login.LoginContract
 import ec.edu.espoch.aplicativo.register.data.ApiClient
 import ec.edu.espoch.aplicativo.register.data.ApiService
@@ -23,16 +24,19 @@ class LoginInteractor {
                     if (loginResponse?.usuario != null) {
                         callback.onResponseSuccess()
                     } else {
+                        Log.e("LoginInteractor", "Credenciales incorrectas. Respuesta del servidor: ${response.body()}")
                         callback.onResponseError("Credenciales incorrectas")
                     }
                 } else {
                     val errorMsg = "Error: ${response.code()} - ${response.message()}"
+                    Log.e("LoginInteractor", "Error en la solicitud: $errorMsg")
                     callback.onResponseError(errorMsg)
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 val errorMsg = "Error al conectar con el servidor: ${t.message}"
+                Log.e("LoginInteractor", errorMsg, t)
                 callback.onResponseError(errorMsg)
             }
         })
