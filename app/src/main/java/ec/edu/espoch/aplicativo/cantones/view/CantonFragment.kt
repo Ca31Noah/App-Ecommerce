@@ -2,6 +2,7 @@ package ec.edu.espoch.aplicativo.cantones.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +62,7 @@ class CantonFragment : Fragment(), CantonesContract.View {
     }
 
     private fun mostrarEmpresasDelCanton(canton: CantonesMain) {
+        Log.d("CantonFragment", "Cargando empresas para el cantón ID: ${canton.id}")
         val intent = Intent(context, EmpresaActivity::class.java)
         intent.putExtra("cantonId", canton.id) // Corregido: "cantonId" en lugar de "idCanton"
         startActivity(intent)

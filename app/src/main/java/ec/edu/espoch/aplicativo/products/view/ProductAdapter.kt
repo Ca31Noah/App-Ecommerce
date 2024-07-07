@@ -28,7 +28,6 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(Pr
         private val descriptionTextView: TextView = itemView.findViewById(R.id.productDescription)
         private val typeTextView: TextView = itemView.findViewById(R.id.productType)
         private val priceTextView: TextView = itemView.findViewById(R.id.productPrice)
-        private val companyIdTextView: TextView = itemView.findViewById(R.id.productCompanyId)
         private val productImageView: ImageView = itemView.findViewById(R.id.productImage)
 
         fun bind(product: Product) {
@@ -36,7 +35,6 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(Pr
             descriptionTextView.text = product.Descripcion
             typeTextView.text = product.Tipo
             priceTextView.text = product.Precio.toString()
-            companyIdTextView.text = product.id_empresa.toString()
 
             // Cargar la imagen desde la URL usando Glide
             Glide.with(itemView.context)
