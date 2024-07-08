@@ -7,16 +7,36 @@
     android:background="@color/darker_gray"
     tools:context=".home.view.HomeFragment">
 
-    <TextView
-        android:id="@+id/availableBalanceTitleTextView"
+    <!-- Barra de búsqueda -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="50dp"
-        android:text="Fragmento Inicio"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="16dp"
+        android:queryHint="Buscar productos..."
+        android:iconifiedByDefault="false" />
+
+    <!-- Medidor de porcentaje -->
+    <ProgressBar
+        android:id="@+id/salesProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:progress="70"
+        android:max="100"
+        android:progressTint="@color/colorAccent"
+        android:layout_gravity="center" />
+
+    <!-- Texto para el medidor de porcentaje -->
+    <TextView
+        android:id="@+id/salesPercentageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="Ventas: 70%"
+        android:textSize="18sp"
+        android:textColor="@color/white" />
 
 </FrameLayout>
