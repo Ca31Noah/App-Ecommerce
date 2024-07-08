@@ -6,4 +6,6 @@
     <color name="green_light">#b8dbbc</color>
     <color name="purple">#800080</color>
     <color name="gris">#c7cdf0</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#FFFFFF</color>
 </resources>
