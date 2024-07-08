@@ -1,60 +1,62 @@
 package ec.edu.espoch.aplicativo.about.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import ec.edu.espoch.aplicativo.R
 import ec.edu.espoch.aplicativo.about.AboutContract
-import ec.edu.espoch.aplicativo.about.AboutMain
+import ec.edu.espoch.aplicativo.about.model.AboutInteractor
 import ec.edu.espoch.aplicativo.about.presenter.AboutPresenter
+import ec.edu.espoch.aplicativo.register.Usuario
 
 class AboutFragment : Fragment(), AboutContract.View {
 
-    private lateinit var adapter: AboutAdapter
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var presenter: AboutContract.Presenter
+    private lateinit var presenter: AboutPresenter
+
+    // Declarar aquí los TextViews u otros elementos de UI necesarios
+    private lateinit var textViewNombre: TextView
+    private lateinit var textViewApellido: TextView
+    private lateinit var textViewCorreo: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_about, container, false)
-        recyclerView = view.findViewById(R.id.recyclerViewAbout)
+        // Inicializar los elementos de UI
+        textViewNombre = view.findViewById(R.id.text_view_nombre)
+        textViewApellido = view.findViewById(R.id.text_view_apellido)
+        textViewCorreo = view.findViewById(R.id.text_view_correo)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize adapter
-        adapter = AboutAdapter { desarrollador ->
-            // Aquí puedes manejar el clic en un elemento del RecyclerView si es necesario
-        }
+        val idUsuario = obtenerIdUsuarioActual()
 
-        // Configure RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = adapter
+        val interactor = AboutInteractor() // O puedes inicializarlo de otra manera si es necesario
+        presenter = AboutPresenter(interactor, this)
 
-        // Initialize presenter and load data
-        presenter = AboutPresenter(this)
-        presenter.loadDesarrolladores()
+        presenter.obtenerPerfilUsuario(idUsuario)
     }
 
-    override fun showLoader() {
-        // Mostrar un indicador de carga si es necesario
+    override fun mostrarPerfilUsuario(usuario: Usuario) {
+        // Mostrar datos del usuario en los TextViews
+        textViewNombre.text = usuario.nombre
+        textViewApellido.text = usuario.apellido
+        textViewCorreo.text = usuario.correo
     }
 
-    override fun hideLoader() {
-        // Ocultar el indicador de carga si es necesario
+    override fun mostrarError(mensaje: String) {
+        // Manejar el error al obtener el perfil del usuario (puedes mostrar un mensaje de error en un Toast, por ejemplo)
     }
 
-    override fun showDesarrolladores(desarrolladores: List<AboutMain>) {
-        Log.d("AboutFragment", "Mostrando desarrolladores: $desarrolladores")
-        adapter.setDesarrolladores(desarrolladores)
+    private fun obtenerIdUsuarioActual(): Int {
+        // Implementa la lógica para obtener el ID del usuario actualmente logueado
+        return 1
     }
 }
