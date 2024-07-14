@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/darker_gray"
     tools:context=".home.view.HomeFragment">
 
-    <!-- Barra de búsqueda -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:queryHint="Buscar productos..."
-        android:iconifiedByDefault="false" />
+        android:layout_height="wrap_content">
 
-    <!-- Medidor de porcentaje -->
-    <ProgressBar
-        android:id="@+id/salesProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:progress="70"
-        android:max="100"
-        android:progressTint="@color/colorAccent"
-        android:layout_gravity="center" />
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Buscar productos" />
 
-    <!-- Texto para el medidor de porcentaje -->
-    <TextView
-        android:id="@+id/salesPercentageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="Ventas: 70%"
-        android:textSize="18sp"
-        android:textColor="@color/white" />
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/searchEditText"
+            android:layout_marginStart="16dp"
+            android:text="Buscar" />
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/cartIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_cart" />
+
+        <TextView
+            android:id="@+id/bestSellingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/searchButton"
+            android:layout_marginTop="16dp"
+            android:text="Productos Más Vendidos"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bestSellingRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bestSellingTitle"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/allProductsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bestSellingRecyclerView"
+            android:layout_marginTop="16dp"
+            android:text="Todos los Productos"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/allProductsTitle"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
+
+    </RelativeLayout>
+</ScrollView>
