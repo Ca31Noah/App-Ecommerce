@@ -25,7 +25,6 @@ class AboutFragment : Fragment(), AboutContract.View {
     private lateinit var textViewApellido: TextView
     private lateinit var textViewCorreo: TextView
     private lateinit var buttonCerrarSesion: Button
-    private lateinit var buttonEditarPerfil: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,16 +37,16 @@ class AboutFragment : Fragment(), AboutContract.View {
         textViewCorreo = view.findViewById(R.id.text_view_correo)
         buttonCerrarSesion = view.findViewById(R.id.button_cerrar_sesion)
 
-
-        val interactor = AboutInteractor(requireContext())
+        // Crear instancia del interactor y presentador
+        val interactor = AboutInteractor(requireContext()) // Usar requireContext() en fragmentos
         presenter = AboutPresenter(interactor, this)
 
         presenter.obtenerDatosUsuario()
 
+        // Manejar clic del botón de cerrar sesión
         buttonCerrarSesion.setOnClickListener {
             cerrarSesion()
         }
-
 
         return view
     }
@@ -63,16 +62,16 @@ class AboutFragment : Fragment(), AboutContract.View {
     }
 
     private fun cerrarSesion() {
-        val sharedPreferences: SharedPreferences =
-            requireContext().getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        // Limpiar SharedPreferences
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("user_data", Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
             clear()
             apply()
         }
 
+        // Redirigir al usuario a la pantalla de inicio de sesión
         val intent = Intent(requireContext(), LoginActivity::class.java)
         startActivity(intent)
         requireActivity().finish()
     }
 }
-

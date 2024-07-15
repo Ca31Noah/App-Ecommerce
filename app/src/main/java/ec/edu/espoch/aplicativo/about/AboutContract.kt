@@ -1,11 +1,12 @@
 package ec.edu.espoch.aplicativo.about
 
+
 import ec.edu.espoch.aplicativo.login.Usuario
 
 interface AboutContract {
     interface View {
-        fun mostrarDatosUsuario(usuario: Usuario)
         fun mostrarError(mensaje: String)
+        fun mostrarDatosUsuario(usuario: Usuario)
     }
 
     interface Presenter {

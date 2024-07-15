@@ -19,7 +19,7 @@ class RegisterInteractor(private val context: Context) : RegisterContract.Presen
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    guardarDatosUsuario(usuario)
+                    saveUserData(usuario)
                     view.mostrarMensajeExito()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Error desconocido"
@@ -37,7 +37,7 @@ class RegisterInteractor(private val context: Context) : RegisterContract.Presen
         this.view = view
     }
 
-    private fun guardarDatosUsuario(usuario: Usuario) {
+    private fun saveUserData(usuario: Usuario) {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
             putString("nombre", usuario.nombre)

@@ -40,7 +40,7 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
         }
 
         // Crear instancia del interactor y presentador
-        val interactor = RegisterInteractor(this) // Pasar el contexto aquí
+        val interactor = RegisterInteractor(this) // Pass context here
         presenter = RegisterPresenter(interactor)
         presenter.setView(this) // Inicialización de la vista
 
