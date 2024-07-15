@@ -7,20 +7,20 @@ interface HomeContract {
         fun showLoading()
         fun hideLoading()
         fun displayProducts(products: List<Product>)
-        fun displayBestSellingProducts(products: List<Product>)  // Agregado para mostrar productos más vendidos
+        fun displayBestSellingProducts(products: List<Product>)
         fun displayError(message: String)
     }
 
     interface Presenter {
         fun searchProducts(query: String)
         fun fetchAllProducts()
-        fun fetchBestSellingProducts()  // Agregado para obtener productos más vendidos
+        fun fetchBestSellingProducts()
         fun onDestroy()
     }
 
     interface Interactor {
         fun fetchProducts(query: String?, listener: OnFinishedListener)
-        fun fetchBestSellingProducts(listener: OnFinishedListener)  // Agregado para obtener productos más vendidos
+        fun fetchBestSellingProducts(listener: OnFinishedListener)
 
         interface OnFinishedListener {
             fun onFinished(products: List<Product>)

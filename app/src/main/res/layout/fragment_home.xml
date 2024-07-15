@@ -9,29 +9,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/searchEditText"
+        <!-- Container for search bar and cart icon -->
+        <LinearLayout
+            android:id="@+id/searchBarContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="Buscar productos" />
+            android:orientation="horizontal">
+
+            <!-- Improved Search Bar -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Buscar productos"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="8dp"
+                    android:padding="12dp"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/cartIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_cart" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/searchEditText"
+            android:layout_below="@id/searchBarContainer"
             android:layout_marginStart="16dp"
             android:text="Buscar" />
-
-        <ImageView
-            android:id="@+id/cartIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_cart" />
 
         <TextView
             android:id="@+id/bestSellingTitle"
@@ -56,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bestSellingRecyclerView"
             android:layout_marginTop="16dp"
-            android:text="Todos los Productos"
+            android:text="Productos"
             android:textSize="18sp"
             android:textStyle="bold" />
 

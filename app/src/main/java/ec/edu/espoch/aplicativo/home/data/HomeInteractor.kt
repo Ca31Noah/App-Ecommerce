@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeInteractor {
 
-    private val BASE_URL = "http://192.168.2.111/android_mysql/" // Reemplaza con tu URL base
+    private val BASE_URL = "http://192.168.2.111/android_mysql/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
