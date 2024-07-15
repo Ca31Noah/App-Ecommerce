@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/cantonFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/cantonFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/cart"
         android:title="@string/title_loans" />
 
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/user_tie"
-        android:title="@string/title_profile" />
+        android:title="Perfil" />
 
 </menu>
