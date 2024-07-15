@@ -5,6 +5,10 @@ interface RegisterContract {
     interface View {
         fun mostrarMensajeExito()
         fun mostrarMensajeError(error: String)
+
+        fun getUserName(): String
+        fun getUserEmail(): String
+        fun getUserPassword(): String
     }
 
     interface Presenter {

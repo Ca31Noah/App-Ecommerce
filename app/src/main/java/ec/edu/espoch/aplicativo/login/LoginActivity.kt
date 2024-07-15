@@ -1,10 +1,13 @@
 package ec.edu.espoch.aplicativo.login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ec.edu.espoch.aplicativo.R
 import ec.edu.espoch.aplicativo.login.data.LoginInteractor
@@ -41,7 +44,11 @@ class LoginActivity : AppCompatActivity() {
             val correo = editTextCorreo.text.toString()
             val password = editTextPassword.text.toString()
 
-            presenter.login(correo, password)
+            if (validarCredenciales(correo, password)) {
+                presenter.login(correo, password)
+            } else {
+                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Navegación a la actividad de registro al hacer clic en "¿No tienes cuenta?"
@@ -49,5 +56,12 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun validarCredenciales(correo: String, password: String): Boolean {
+        val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val storedCorreo = sharedPreferences.getString("correo", null)
+        val storedPassword = sharedPreferences.getString("contrasenia", null)
+        return correo == storedCorreo && password == storedPassword
     }
 }

@@ -30,6 +30,8 @@
         <activity android:name=".register.RegistroActivity"/>
         <activity android:name=".Empresas.View.EmpresaActivity"/>
         <activity android:name=".products.ProductActivity"/>
+        <activity android:name=".update.view.EditProfileActivity" />
+
 
 
     </application>

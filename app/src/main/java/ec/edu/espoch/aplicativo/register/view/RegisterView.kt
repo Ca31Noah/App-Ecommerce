@@ -12,4 +12,17 @@ class RegisterView(private val context: Context) : RegisterContract.View {
     override fun mostrarMensajeError(error: String) {
         Toast.makeText(context, "Error: $error", Toast.LENGTH_SHORT).show()
     }
+
+    override fun getUserName(): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getUserEmail(): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getUserPassword(): String {
+        TODO("Not yet implemented")
+    }
+
 }

@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ProductInteractor : ProductsContract.Interactor {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.31.1/android_mysql/")
+        .baseUrl("http://10.0.2.2/android_mysql/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

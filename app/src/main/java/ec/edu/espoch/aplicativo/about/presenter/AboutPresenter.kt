@@ -6,19 +6,14 @@ import ec.edu.espoch.aplicativo.about.model.AboutInteractor
 class AboutPresenter(
     private val interactor: AboutInteractor,
     private val view: AboutContract.View
-) : AboutContract.Presenter, AboutContract.Interactor.OnFinishedListener {
+) : AboutContract.Presenter {
 
-    override fun obtenerPerfilUsuario(idUsuario: Int) {
-        interactor.obtenerPerfilUsuario(idUsuario, this)
-    }
-
-
-    override fun onFinished(usuario: ec.edu.espoch.aplicativo.register.Usuario) {
-        view.mostrarPerfilUsuario(usuario)
-    }
-
-    override fun onError(mensaje: String) {
-        view.mostrarError(mensaje)
+    override fun obtenerDatosUsuario() {
+        val usuario = interactor.obtenerDatosUsuario()
+        if (usuario != null) {
+            view.mostrarDatosUsuario(usuario)
+        } else {
+            view.mostrarError("No se encontraron datos del usuario")
+        }
     }
 }
-

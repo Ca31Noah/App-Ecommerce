@@ -1,31 +1,21 @@
 package ec.edu.espoch.aplicativo.about.model
 
-import ec.edu.espoch.aplicativo.about.AboutContract
-import ec.edu.espoch.aplicativo.register.Usuario
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import android.content.Context
+import android.content.SharedPreferences
+import ec.edu.espoch.aplicativo.login.Usuario
 
-class AboutInteractor : AboutContract.Interactor {
+class AboutInteractor(private val context: Context) {
 
-    private val apiService: ApiService = ApiClient.retrofit.create(ApiService::class.java)
+    fun obtenerDatosUsuario(): Usuario? {
+        val sharedPreferences: SharedPreferences = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val nombre = sharedPreferences.getString("nombre", null)
+        val apellido = sharedPreferences.getString("apellido", null)
+        val correo = sharedPreferences.getString("correo", null)
 
-    override fun obtenerPerfilUsuario(idUsuario: Int, listener: AboutContract.Interactor.OnFinishedListener) {
-        val call = apiService.obtenerPerfilUsuario(idUsuario)
-
-        call.enqueue(object : Callback<Usuario> {
-            override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                if (response.isSuccessful) {
-                    val usuario = response.body()
-                    usuario?.let { listener.onFinished(it) }
-                } else {
-                    listener.onError("Error al obtener datos del usuario: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                listener.onError("Error de conexión: ${t.message}")
-            }
-        })
+        return if (nombre != null && apellido != null && correo != null) {
+            Usuario(nombre, apellido, correo, "") // No se guarda la contraseña en el perfil
+        } else {
+            null
+        }
     }
 }
