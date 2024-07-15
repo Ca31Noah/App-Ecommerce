@@ -1,60 +1,77 @@
 package ec.edu.espoch.aplicativo.about.view
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import ec.edu.espoch.aplicativo.R
 import ec.edu.espoch.aplicativo.about.AboutContract
-import ec.edu.espoch.aplicativo.about.AboutMain
 import ec.edu.espoch.aplicativo.about.presenter.AboutPresenter
+import ec.edu.espoch.aplicativo.about.model.AboutInteractor
+import ec.edu.espoch.aplicativo.login.LoginActivity
+import ec.edu.espoch.aplicativo.login.Usuario
 
 class AboutFragment : Fragment(), AboutContract.View {
 
-    private lateinit var adapter: AboutAdapter
-    private lateinit var recyclerView: RecyclerView
     private lateinit var presenter: AboutContract.Presenter
+    private lateinit var textViewNombre: TextView
+    private lateinit var textViewApellido: TextView
+    private lateinit var textViewCorreo: TextView
+    private lateinit var buttonCerrarSesion: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_about, container, false)
-        recyclerView = view.findViewById(R.id.recyclerViewAbout)
+
+        textViewNombre = view.findViewById(R.id.text_view_nombre)
+        textViewApellido = view.findViewById(R.id.text_view_apellido)
+        textViewCorreo = view.findViewById(R.id.text_view_correo)
+        buttonCerrarSesion = view.findViewById(R.id.button_cerrar_sesion)
+
+        // Crear instancia del interactor y presentador
+        val interactor = AboutInteractor(requireContext()) // Usar requireContext() en fragmentos
+        presenter = AboutPresenter(interactor, this)
+
+        presenter.obtenerDatosUsuario()
+
+        // Manejar clic del botón de cerrar sesión
+        buttonCerrarSesion.setOnClickListener {
+            cerrarSesion()
+        }
+
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun mostrarDatosUsuario(usuario: Usuario) {
+        textViewNombre.text = usuario.nombre
+        textViewApellido.text = usuario.apellido
+        textViewCorreo.text = usuario.correo
+    }
 
-        // Initialize adapter
-        adapter = AboutAdapter { desarrollador ->
-            // Aquí puedes manejar el clic en un elemento del RecyclerView si es necesario
+    override fun mostrarError(mensaje: String) {
+        Toast.makeText(requireContext(), mensaje, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun cerrarSesion() {
+        // Limpiar SharedPreferences
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            clear()
+            apply()
         }
 
-        // Configure RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = adapter
-
-        // Initialize presenter and load data
-        presenter = AboutPresenter(this)
-        presenter.loadDesarrolladores()
-    }
-
-    override fun showLoader() {
-        // Mostrar un indicador de carga si es necesario
-    }
-
-    override fun hideLoader() {
-        // Ocultar el indicador de carga si es necesario
-    }
-
-    override fun showDesarrolladores(desarrolladores: List<AboutMain>) {
-        Log.d("AboutFragment", "Mostrando desarrolladores: $desarrolladores")
-        adapter.setDesarrolladores(desarrolladores)
+        // Redirigir al usuario a la pantalla de inicio de sesión
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 }

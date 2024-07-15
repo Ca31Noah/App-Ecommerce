@@ -37,12 +37,10 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
         // Configurar clic en "¿Ya tienes cuenta? Inicia sesión aquí"
         textViewYaCuenta.setOnClickListener {
             startActivity(Intent(this@RegistroActivity, LoginActivity::class.java))
-            // Opcional: finaliza la actividad actual si no quieres que el usuario vuelva a ella con el botón de retroceso
-            // finish()
         }
 
         // Crear instancia del interactor y presentador
-        val interactor = RegisterInteractor()
+        val interactor = RegisterInteractor(this) // Pass context here
         presenter = RegisterPresenter(interactor)
         presenter.setView(this) // Inicialización de la vista
 
@@ -106,5 +104,17 @@ class RegistroActivity : AppCompatActivity(), RegisterContract.View {
 
     private fun validarPassword(password: String): Boolean {
         return password.length >= 8
+    }
+
+    override fun getUserName(): String {
+        return editTextNombre.text.toString().trim()
+    }
+
+    override fun getUserEmail(): String {
+        return editTextCorreo.text.toString().trim()
+    }
+
+    override fun getUserPassword(): String {
+        return editTextPassword.text.toString().trim()
     }
 }

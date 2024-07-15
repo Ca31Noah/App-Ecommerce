@@ -1,38 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darker_gray">
+    android:padding="16dp">
 
-    <!-- Contenedor para la imagen -->
-    <LinearLayout
-        android:id="@+id/headerContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/green_light"
-        android:fontFamily="@font/montserrat_bold"
-        android:padding="18dp">
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Imagen -->
-        <ImageView
-            android:id="@+id/imageViewTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/title_image_description"
-            android:src="@drawable/espoch2" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <!-- RecyclerView para mostrar la lista de cantones -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAbout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/headerContainer"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical" />
+            <!-- Header Container -->
+            <LinearLayout
+                android:id="@+id/headerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_bold"
+                android:orientation="horizontal"
+                android:padding="18dp">
 
-</RelativeLayout>
+                <!-- Imagen -->
+                <ImageView
+                    android:id="@+id/imageViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/title_image_description"
+                    android:src="@drawable/espoch2" />
+            </LinearLayout>
 
+            <!-- ProgressBar -->
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp" />
 
+            <!-- Título "Mi Cuenta" -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Mi Cuenta"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="28sp"
+                android:layout_gravity="center" />
+
+            <!-- CardView para Nombre -->
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="196dp"
+                android:layout_height="241dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/usuario" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:id="@+id/text_view_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@color/gris"
+                    android:text="Nombre"
+                    android:textSize="24sp"
+                    android:gravity="center" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView para Apellido -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:id="@+id/text_view_apellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@color/gris"
+                    android:text="Apellido"
+                    android:textSize="24sp"
+                    android:gravity="center" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView para Correo -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:id="@+id/text_view_correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@color/gris"
+                    android:text="Correo"
+                    android:textSize="24sp"
+                    android:gravity="center" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Imagen -->
+
+            <!-- Botón Cerrar Sesión -->
+            <Button
+                android:id="@+id/button_cerrar_sesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cerrar Sesión"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center" />
+
+            
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

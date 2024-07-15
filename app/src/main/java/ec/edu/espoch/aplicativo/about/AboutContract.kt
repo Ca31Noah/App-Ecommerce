@@ -1,17 +1,24 @@
 package ec.edu.espoch.aplicativo.about
 
+
+import ec.edu.espoch.aplicativo.login.Usuario
+
 interface AboutContract {
     interface View {
-        fun showLoader()
-        fun hideLoader()
-        fun showDesarrolladores(desarrolladores: List<AboutMain>)
+        fun mostrarError(mensaje: String)
+        fun mostrarDatosUsuario(usuario: Usuario)
     }
 
     interface Presenter {
-        fun loadDesarrolladores()
+        fun obtenerDatosUsuario()
     }
 
-    interface OnResponseCallBack {
-        fun onResponse(desarrolladores: List<AboutMain>)
+    interface Interactor {
+        interface OnFinishedListener {
+            fun onFinished(usuario: Usuario)
+            fun onFailure(mensaje: String)
+        }
+
+        fun obtenerDatosUsuario(callback: OnFinishedListener)
     }
 }
